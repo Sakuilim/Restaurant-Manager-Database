@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\miliu\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\miliu\\.nuget\\packages"
+    ]
+  }
+}
