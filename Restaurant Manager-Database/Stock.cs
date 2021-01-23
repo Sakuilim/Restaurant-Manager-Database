@@ -26,7 +26,7 @@ namespace Restaurant_Manager_Database
                 if (sk == stock_id[i])
                 {
                     tmp = i;
-                    stock_id[tmp] = int.Parse(Console.ReadLine());
+                   // stock_id[tmp] = int.Parse(Console.ReadLine());
                     stock[tmp] = Console.ReadLine();
                     prt_cnt[tmp] = float.Parse(Console.ReadLine());
                     unit[tmp] = Console.ReadLine();

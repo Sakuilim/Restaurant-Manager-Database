@@ -83,8 +83,8 @@ namespace Restaurant_Manager_Database
                             {
                                 Console.WriteLine("There's no such ID in menu, try again");
                                 Thread.Sleep(1000);
-                                menu.RemoveAt(menu_id.Count);
-                                menu_id.RemoveAt(menu_id.Count);
+                                menu.RemoveAt(menu_id.Count-1);
+                                menu_id.RemoveAt(menu_id.Count-1);
                                 break;
                             }
                         }

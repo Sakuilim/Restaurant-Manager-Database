@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj",
+      "projectUniqueName": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant Manager-Database\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj",
       "projectName": "Restaurant Manager-Database",
-      "projectPath": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj",
+      "projectPath": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant Manager-Database\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj",
       "packagesPath": "C:\\Users\\miliu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant Manager-Database\\Restaurant Manager-Database\\obj\\",
+      "outputPath": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant Manager-Database\\Restaurant-Manager-Database\\Restaurant Manager-Database\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\miliu\\AppData\\Roaming\\NuGet\\NuGet.Config",

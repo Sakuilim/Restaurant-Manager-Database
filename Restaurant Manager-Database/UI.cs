@@ -9,6 +9,7 @@ namespace Restaurant_Manager_Database
         Data D = new Data();
         Stock S = new Stock();
         Menu M = new Menu();
+        Order O = new Order();
         public bool MainMenu()
         {
             Console.Clear();
@@ -44,7 +45,16 @@ namespace Restaurant_Manager_Database
             foreach (var id in D.stock_id)
             {
                 Console.Write(id);
-                Console.WriteLine(D.stock[i]);
+                Console.Write(" ");
+                Console.Write(D.stock[i]);
+                Console.Write(" ");
+                Console.Write(D.prt_cnt[i]);
+                Console.Write(" ");
+                Console.Write(D.unit[i]);
+                Console.Write(" ");
+                Console.Write(D.prt_sze[i]);
+                Console.Write(" ");
+                Console.WriteLine();
                 i++;
             }
         }
@@ -99,6 +109,43 @@ namespace Restaurant_Manager_Database
                 }
             }
            
+        }
+        public bool OrderMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Order Manager:");
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Add an order");
+            Console.WriteLine("2) Remove an Order");
+            Console.WriteLine("3) Update a Order");
+            Console.WriteLine("4) Exit");
+            Console.WriteLine("Current Orders:");
+            Console.Write("\r\nSelect an option: ");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    O.Create(D.order_id,D.order,D.menu_id,D.menu,D.time,D.stock_id,D.stock,D.unit,D.prt_cnt,D.prt_sze);
+                    return true;
+                case "2":
+                    O.Complete(D.order_id, D.time, D.order);
+                    return true;
+                case "3":
+                    O.Cancel(D.order_id, D.time, D.order);
+                    return true;
+                case "4":
+                    return false;
+                default:
+                    return true;
+            }
+        }
+        public void Order_menu()
+        {
+            for(int i=0;i<D.order_id.Count;i++)
+            {
+                Console.WriteLine(D.order_id[i]);
+                Console.WriteLine(D.time[i]);
+                
+            }
         }
     }
 }

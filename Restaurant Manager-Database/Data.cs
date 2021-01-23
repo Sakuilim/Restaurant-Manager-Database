@@ -18,7 +18,7 @@ namespace Restaurant_Manager_Database
 
         public List<int> order_id = new List<int>();
         public List<string> time = new List<string>();
-        public List<int> order = new List<int>();
+        public List<List<int>> order = new List<List<int>>();
 
     }
 }
