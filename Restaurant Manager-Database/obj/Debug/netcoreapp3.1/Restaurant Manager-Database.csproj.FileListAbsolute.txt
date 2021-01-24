@@ -24,3 +24,16 @@ C:\Users\miliu\Documents\GitHub\Restaurant Manager-Database\Restaurant-Manager-D
 C:\Users\miliu\Documents\GitHub\Restaurant Manager-Database\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.dll
 C:\Users\miliu\Documents\GitHub\Restaurant Manager-Database\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.pdb
 C:\Users\miliu\Documents\GitHub\Restaurant Manager-Database\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.genruntimeconfig.cache
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\bin\Debug\netcoreapp3.1\Restaurant Manager-Database.exe
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\bin\Debug\netcoreapp3.1\Restaurant Manager-Database.deps.json
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\bin\Debug\netcoreapp3.1\Restaurant Manager-Database.runtimeconfig.json
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\bin\Debug\netcoreapp3.1\Restaurant Manager-Database.runtimeconfig.dev.json
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\bin\Debug\netcoreapp3.1\Restaurant Manager-Database.dll
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\bin\Debug\netcoreapp3.1\Restaurant Manager-Database.pdb
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.csprojAssemblyReference.cache
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.AssemblyInfoInputs.cache
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.AssemblyInfo.cs
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.csproj.CoreCompileInputs.cache
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.dll
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.pdb
+C:\Users\miliu\Documents\GitHub\Repo\Restaurant-Manager-Database\Restaurant Manager-Database\obj\Debug\netcoreapp3.1\Restaurant Manager-Database.genruntimeconfig.cache

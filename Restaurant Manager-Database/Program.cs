@@ -12,7 +12,7 @@ namespace Restaurant_Manager_Database
             while (showMenu)
             {
 
-                showMenu = uI.MainMenu();
+                showMenu = uI.WholeMenu();
             }
         }
        

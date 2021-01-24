@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
+using System.Threading;
 
 namespace Restaurant_Manager_Database
 {
@@ -10,67 +11,81 @@ namespace Restaurant_Manager_Database
         Data DT = new Data();
         public void Create(List<int> order_id,List<List<int>> order, List<int> menu_id, List<Tuple<string, List<int>>> menu, List<string> time, List<int> stock_id, List<string> stock, List<string> unit, List<float> prt_cnt, List<float> prt_sze)
         {
+            int cnt = 0;
+            bool stop = false;
+            List<int> dish = new List<int>();
+            string tim = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             int oid = int.Parse(Console.ReadLine());
-            order_id.Add(oid);
-            time.Add(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             int size = int.Parse(Console.ReadLine());
             {
                 for(int j =0;j<size;j++)
                 {
                     int sk = int.Parse(Console.ReadLine());
-                    foreach (var id in menu_id)
-                    {
-                        if (sk == id)
+                    for(int l=0;l<menu_id.Count;l++)
+                    { 
+                        if (sk == menu_id[l])
                         {
-                            order[order_id.Count+1].Add(sk);
-                            for(int i=0;i< menu[sk].Item2.Count;i++)
+                            dish.Add(sk);
+                            cnt++;
+                            foreach(var id in menu[l].Item2)
                             {
-                                for(int k=0;k<stock_id.Count;k++)
+                                for(int i=0;i<stock_id.Count;i++)
                                 {
-                                    if (menu[sk].Item2[i] == stock_id[k])
+                                    if(id == stock_id[i])
                                     {
-                                        if(prt_cnt[k]<=0&& prt_cnt[k] - prt_sze[k]>0)
+                                        if(prt_cnt[i]>0&& prt_cnt[i] - prt_sze[i]>0)
                                         {
-                                            order_id.RemoveAt(order_id.Count + 1);
-                                            time.RemoveAt(order_id.Count + 1);
-                                            order.RemoveAt(order_id.Count + 1);
-                                            break;
+                                            prt_cnt[i] = prt_cnt[i] - prt_sze[i];
                                         }
                                         else
                                         {
-                                            prt_cnt[k] = prt_cnt[k] - prt_sze[k];
+                                            stop = true;
                                         }
-                                    }
-                                    else
-                                    {
-                                        order_id.RemoveAt(order_id.Count + 1);
-                                        time.RemoveAt(order_id.Count + 1);
-                                        order.RemoveAt(order_id.Count + 1);
-                                        break;
+                                       
                                     }
                                 }
                             }
                         }
-                        else
-                        {
-                            Console.WriteLine("There's no such ID in menu, try again");
-                            j--;
-                        }
                     }
+                }
+                if(stop == false&&cnt==size)
+                {
+                    order_id.Add(oid);
+                    time.Add(tim);
+                    order.Add(new List<int>(dish));
+                }
+                else
+                {
+                    Console.WriteLine("Klaida!");
                 }
             }
         }
-        public void Complete(List<int> order_id, List<string> time, List<int> order)
+        public void Complete(List<int> order_id, List<List<int>> order, List<int> menu_id, List<Tuple<string, List<int>>> menu, List<string> time, List<int> stock_id, List<string> stock, List<string> unit, List<float> prt_cnt, List<float> prt_sze)
         {
             int sk = int.Parse(Console.ReadLine());
             for(int i=0;i<order_id.Count;i++)
             {
                 if(sk==order_id[i])
                 {
-                    order_id.RemoveAt(i);
-                    order.RemoveAt(i);
-                    time.RemoveAt(i);
-                    break;
+                    for (int l = 0; l < order[i].Count; l++)
+                    {
+                       for(int j=0;j<menu_id.Count;j++)
+                        {
+                            if(menu_id[j]==order[i][l])
+                            {
+                                for(int k=0;k<menu[j].Item2.Count;k++)
+                                {
+                                    for(int z=0;z<stock_id.Count;z++)
+                                    {
+                                        if(menu[j].Item2[k]==stock_id[z])
+                                        {
+                                            prt_cnt[z] = prt_cnt[z] + prt_sze[z];
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 else if (i == order_id.Count - 1)
                 {
@@ -78,7 +93,7 @@ namespace Restaurant_Manager_Database
                 }
             }
         }
-        public void Cancel(List<int> order_id, List<string> time, List<int> order)
+        public void Cancel(List<int> order_id, List<string> time, List<List<int>> order)
         {
             int sk = int.Parse(Console.ReadLine());
             for (int i = 0; i < order_id.Count; i++)
@@ -96,5 +111,6 @@ namespace Restaurant_Manager_Database
                 }
             }
         }
+
     }
 }

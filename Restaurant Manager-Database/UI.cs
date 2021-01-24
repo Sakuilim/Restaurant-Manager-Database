@@ -98,7 +98,6 @@ namespace Restaurant_Manager_Database
                     Console.Write(' ');
                     Console.Write(D.menu[i].Item1);
                     Console.Write(' ');
-                    Console.Write(D.menu[i].Item2.Count);
                     for (int j = 0; j < D.menu[i].Item2.Count; j++)
                     {
 
@@ -116,10 +115,11 @@ namespace Restaurant_Manager_Database
             Console.WriteLine("Order Manager:");
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1) Add an order");
-            Console.WriteLine("2) Remove an Order");
-            Console.WriteLine("3) Update a Order");
+            Console.WriteLine("2) Complete an Order");
+            Console.WriteLine("3) Cancel an Order");
             Console.WriteLine("4) Exit");
             Console.WriteLine("Current Orders:");
+            Order_menu();
             Console.Write("\r\nSelect an option: ");
             switch (Console.ReadLine())
             {
@@ -127,7 +127,7 @@ namespace Restaurant_Manager_Database
                     O.Create(D.order_id,D.order,D.menu_id,D.menu,D.time,D.stock_id,D.stock,D.unit,D.prt_cnt,D.prt_sze);
                     return true;
                 case "2":
-                    O.Complete(D.order_id, D.time, D.order);
+                    O.Complete(D.order_id, D.order, D.menu_id, D.menu, D.time, D.stock_id, D.stock, D.unit, D.prt_cnt, D.prt_sze);
                     return true;
                 case "3":
                     O.Cancel(D.order_id, D.time, D.order);
@@ -140,11 +140,43 @@ namespace Restaurant_Manager_Database
         }
         public void Order_menu()
         {
-            for(int i=0;i<D.order_id.Count;i++)
+            for (int i = 0; i < D.order_id.Count; i++)
             {
-                Console.WriteLine(D.order_id[i]);
-                Console.WriteLine(D.time[i]);
-                
+                Console.Write(D.order_id[i]);
+                Console.Write(" ");
+                Console.Write(D.time[i]);
+                Console.Write(" ");
+                Console.WriteLine(D.order[i].Count);
+                Console.WriteLine();
+
+            }
+            
+        }
+        public bool WholeMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Restaurant Manager:");
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Use the Stock Manager");
+            Console.WriteLine("2) Use the Menu Manager");
+            Console.WriteLine("3) Use the Order Manager");
+            Console.WriteLine("4) Exit");
+            Console.Write("\r\nSelect an option: ");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    MainMenu();
+                    return true;
+                case "2":
+                    RestMenu();
+                    return true;
+                case "3":
+                    OrderMenu();
+                    return true;
+                case "4":
+                    return false;
+                default:
+                    return true;
             }
         }
     }

@@ -13,8 +13,7 @@ namespace Restaurant_Manager_Database
             prt_cnt.Add(float.Parse(Console.ReadLine()));
             unit.Add(Console.ReadLine());
             prt_sze.Add(float.Parse(Console.ReadLine()));
-            
-           
+            addStock(stock_id[stock_id.Count-1], stock[stock_id.Count - 1], prt_cnt[stock_id.Count - 1], unit[stock_id.Count - 1], prt_sze[stock_id.Count - 1], "Stock.csv");
         }
         public void Update(List<int> stock_id, List<string> stock, List<string> unit, List<float> prt_cnt, List<float> prt_sze)
         {
@@ -26,11 +25,11 @@ namespace Restaurant_Manager_Database
                 if (sk == stock_id[i])
                 {
                     tmp = i;
-                   // stock_id[tmp] = int.Parse(Console.ReadLine());
                     stock[tmp] = Console.ReadLine();
                     prt_cnt[tmp] = float.Parse(Console.ReadLine());
                     unit[tmp] = Console.ReadLine();
                     prt_sze[tmp] = float.Parse(Console.ReadLine());
+                    addStock(stock_id[tmp], stock[tmp], prt_cnt[tmp], unit[tmp], prt_sze[tmp],"Stock.csv");
                     break;
                 }
                 else if (i == stock_id.Count - 1)
@@ -38,8 +37,6 @@ namespace Restaurant_Manager_Database
                     Console.WriteLine("There's no such ID, try again");
                 }
             }
-            
-
         }
         public void Remove(List<int> stock_id, List<string> stock, List<string> unit, List<float> prt_cnt, List<float> prt_sze)
         {
@@ -63,7 +60,20 @@ namespace Restaurant_Manager_Database
                     Console.WriteLine("There's no such ID, try again");
                 }
             }
-            
+        }
+        public static void addStock(int ID, string name, float portion, string unit, float prtsize, string filepath)
+        {
+            try
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
+                {
+                    file.WriteLine(ID + "," + name + "," + portion + "," + unit + "," + prtsize);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error", ex);
+            }
         }
     }
 }

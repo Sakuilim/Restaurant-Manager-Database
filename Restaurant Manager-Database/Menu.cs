@@ -9,8 +9,10 @@ namespace Restaurant_Manager_Database
     {
         public void Add(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
         {
+            int cnt = 0;
+            int id;
             bool stop = false;
-            menu_id.Add(int.Parse(Console.ReadLine()));
+            id = int.Parse(Console.ReadLine());
             string dish = Console.ReadLine();
             int size = int.Parse(Console.ReadLine());
             List<int> prod = new List<int>();
@@ -33,21 +35,18 @@ namespace Restaurant_Manager_Database
                             if (sk == stock_id[j])
                             {
                                 prod.Add(sk);
+                                cnt++;
                             }
-                            else
-                            {
-                                Console.WriteLine("There's no such ID in menu, try again");
-                                Thread.Sleep(1000);
-                                stop = true;
-                                break;
-                            }
+                           
                         }
                     }
 
                 }
-                if (stop == false)
+                if (stop == false&& cnt == size)
                 {
+                    menu_id.Add(id);
                     menu.Add(new Tuple<string, List<int>>(dish, prod));
+                    addMenu(id, dish, prod, "Menu.csv");
                 }
             }
             else
@@ -59,17 +58,18 @@ namespace Restaurant_Manager_Database
         }
         public void Update(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
         {
+            int cnt = 0;
             int sk = 0;
             int tmp = 0;
             sk = Convert.ToInt32(Console.ReadLine());
+            string dish = Console.ReadLine();
+            List<int> prod = new List<int>();
+            int size = int.Parse(Console.ReadLine());
             for (int i = 0; i < menu_id.Count; i++)
             {
                 if (sk == menu_id[i])
                 {
                     tmp = i;
-                    string dish = Console.ReadLine();
-                    int size = int.Parse(Console.ReadLine());
-                    List<int> prod = new List<int>();
                     for (int j = 0; j < size; j++)
                     {
                         int sk2 = int.Parse(Console.ReadLine());
@@ -78,20 +78,10 @@ namespace Restaurant_Manager_Database
                             if (sk2 == stock_id[j])
                             {
                                 prod.Add(sk2);
-                            }
-                            else
-                            {
-                                Console.WriteLine("There's no such ID in menu, try again");
-                                Thread.Sleep(1000);
-                                menu.RemoveAt(menu_id.Count-1);
-                                menu_id.RemoveAt(menu_id.Count-1);
-                                break;
+                                cnt++;
                             }
                         }
-                        
                     }
-                    menu[tmp] = Tuple.Create(dish, prod);
-                    
                 }
                 else if (i == menu_id.Count - 1)
                 {
@@ -99,6 +89,16 @@ namespace Restaurant_Manager_Database
                     Thread.Sleep(1000);
                 }
             }
+            if (cnt == size)
+            {
+                menu[tmp] = Tuple.Create(dish, prod);
+                addMenu(sk, dish,prod,"Menu.csv");
+            }
+            else
+            {
+                Console.WriteLine("Error");
+            }
+
             
         }
         public void Remove(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
@@ -120,7 +120,20 @@ namespace Restaurant_Manager_Database
                     Console.WriteLine("There's no such ID, try again");
                 }
             }
-            
+        }
+        public static void addMenu(int ID, string name, List<int> products, string filepath)
+        {
+            try
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
+                {
+                    file.WriteLine(ID +  "," + name + "," + products);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error", ex);
+            }
         }
     }
 }
