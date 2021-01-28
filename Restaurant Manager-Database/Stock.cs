@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Restaurant_Manager_Database
@@ -13,7 +14,7 @@ namespace Restaurant_Manager_Database
             prt_cnt.Add(float.Parse(Console.ReadLine()));
             unit.Add(Console.ReadLine());
             prt_sze.Add(float.Parse(Console.ReadLine()));
-            addStock(stock_id[stock_id.Count-1], stock[stock_id.Count - 1], prt_cnt[stock_id.Count - 1], unit[stock_id.Count - 1], prt_sze[stock_id.Count - 1], "Stock.csv");
+            addStock(stock_id[stock_id.Count-1], stock[stock_id.Count - 1], prt_cnt[stock_id.Count - 1], unit[stock_id.Count - 1], prt_sze[stock_id.Count - 1], "Stock.txt");
         }
         public void Update(List<int> stock_id, List<string> stock, List<string> unit, List<float> prt_cnt, List<float> prt_sze)
         {
@@ -25,12 +26,12 @@ namespace Restaurant_Manager_Database
                 if (sk == stock_id[i])
                 {
                     tmp = i;
+                    deleteStock(stock_id[i], "Stock.txt", 0);
                     stock[tmp] = Console.ReadLine();
                     prt_cnt[tmp] = float.Parse(Console.ReadLine());
                     unit[tmp] = Console.ReadLine();
                     prt_sze[tmp] = float.Parse(Console.ReadLine());
-                    addStock(stock_id[tmp], stock[tmp], prt_cnt[tmp], unit[tmp], prt_sze[tmp],"Stock.csv");
-                    break;
+                    addStock(stock_id[tmp], stock[tmp], prt_cnt[tmp], unit[tmp], prt_sze[tmp],"Stock.txt");
                 }
                 else if (i == stock_id.Count - 1)
                 {
@@ -47,13 +48,14 @@ namespace Restaurant_Manager_Database
             {
                 if(sk == stock_id[i])
                 {
+                    deleteStock(stock_id[i], "Stock.txt", 0);
                     tmp = i;
+                    
                     stock_id.RemoveAt(tmp);
-                    stock.RemoveAt(tmp);
-                    prt_cnt.RemoveAt(tmp);
-                    unit.RemoveAt(tmp);
+                   stock.RemoveAt(tmp);
+                   prt_cnt.RemoveAt(tmp);
+                   unit.RemoveAt(tmp);
                     prt_sze.RemoveAt(tmp);
-                    break;
                 }
                 else if (i == stock_id.Count-1)
                 {
@@ -75,5 +77,47 @@ namespace Restaurant_Manager_Database
                 throw new ApplicationException("Error", ex);
             }
         }
+        public static void deleteStock(int stock_id, string filepath, int pos)
+        {
+            string tempfile = "temp.txt";
+            bool deleted = false;   
+            {
+                
+                string[] lines = System.IO.File.ReadAllLines(@filepath);
+                for(int i=0;i<lines.Length;i++)
+                {
+                    string[] fields = lines[i].Split(',');
+                    if(recordMatches(stock_id, fields,pos)==false|| deleted)
+                    {
+                       addStock(int.Parse(fields[0]), fields[1], float.Parse(fields[2]),fields[3] , float.Parse(fields[4]), @tempfile);
+                    }
+                    else
+                    {   
+                        deleted = true;
+                        Console.WriteLine("Deleted!");
+                    }
+                }
+
+                if (lines.Length > 1)
+                {
+                    File.Delete(@filepath);
+                    System.IO.File.Move(tempfile, filepath);
+                }
+                else
+                {
+                    File.Create(filepath).Close();
+                }
+                
+
+            }
+        }
+        public static bool recordMatches(int ID, string[] record, int pos)
+        {
+            if (record[pos] == Convert.ToString(ID))
+            {
+                return true;
+            }
+            return false;
+        }
     }
-}
+}   

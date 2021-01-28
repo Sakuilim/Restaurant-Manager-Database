@@ -56,7 +56,7 @@ namespace Restaurant_Manager_Database
                 }
                 else
                 {
-                    Console.WriteLine("Klaida!");
+                    Console.WriteLine("Error!");
                 }
             }
         }

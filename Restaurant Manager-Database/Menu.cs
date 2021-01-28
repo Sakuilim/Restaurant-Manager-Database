@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading;
 
@@ -113,6 +114,7 @@ namespace Restaurant_Manager_Database
                     tmp = i;
                     menu.RemoveAt(tmp);
                     menu_id.RemoveAt(tmp);
+                    deleteMenu(menu_id[i],"Menu.csv",i);
                     break;
                 }
                 else if (i == menu_id.Count - 1)
@@ -127,13 +129,57 @@ namespace Restaurant_Manager_Database
             {
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
                 {
-                    file.WriteLine(ID +  "," + name + "," + products);
+                    file.Write(ID + "," + name + ",");
+                    foreach (var prod in products)
+                    {
+                        file.Write(prod);
+                        file.Write(" ");
+                    }
+                    file.WriteLine();
+                     
                 }
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Error", ex);
             }
+        }
+        public static void deleteMenu(int ID, string filepath, int pos)
+        {
+            pos--;
+            string tempfile = "temp.csv";
+            bool deleted = false;
+            try
+            {
+                string[] lines = System.IO.File.ReadAllLines(@filepath);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string[] fields = lines[i].Split(',');
+                    if (!(recordMatches(ID, fields, pos)) || deleted)
+                    {
+                        addMenu(int.Parse(fields[0]), fields[1], new List<int>(int.Parse(fields[2])), @tempfile);
+                    }
+                    else
+                    {
+                        deleted = true;
+                        Console.WriteLine("Deleted!");
+                    }
+                }
+                File.Delete(@filepath);
+                System.IO.File.Move(tempfile, filepath);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error!", ex);
+            }
+        }
+        public static bool recordMatches(int ID, string[] record, int pos)
+        {
+            if (record[pos].Equals(ID))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
