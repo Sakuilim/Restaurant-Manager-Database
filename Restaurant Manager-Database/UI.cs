@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Restaurant_Manager_Database
 {
-    class UI
+    public class UI
     {
         Data D = new Data();
         Stock S = new Stock();
         Menu M = new Menu();
         Order O = new Order();
-        public bool MainMenu()
+        private bool MainMenu()
         {
             Console.Clear();
             Console.WriteLine("Stock Manager:");
@@ -25,7 +25,7 @@ namespace Restaurant_Manager_Database
             switch (Console.ReadLine())
             {
                 case "1":
-                    S.Add(D.stock_id, D.stock,D.unit,D.prt_cnt,D.prt_sze);
+                    S.Add(D.stock_id, D.stock, D.unit, D.prt_cnt, D.prt_sze);
                     return true;
                 case "2":
                     S.Remove(D.stock_id, D.stock, D.unit, D.prt_cnt, D.prt_sze);
@@ -39,7 +39,7 @@ namespace Restaurant_Manager_Database
                     return true;
             }
         }
-        public void Show_stock()
+        private void Show_stock()
         {
             int i = 0;
             foreach (var id in D.stock_id)
@@ -58,7 +58,7 @@ namespace Restaurant_Manager_Database
                 i++;
             }
         }
-        public bool RestMenu()
+        private bool RestMenu()
         {
             Console.Clear();
             Console.WriteLine("Menu Manager:");
@@ -73,7 +73,7 @@ namespace Restaurant_Manager_Database
             switch (Console.ReadLine())
             {
                 case "1":
-                    M.Add(D.menu_id, D.menu,D.stock_id);
+                    M.Add(D.menu_id, D.menu, D.stock_id);
                     return true;
                 case "2":
                     M.Remove(D.menu_id, D.menu, D.stock_id);
@@ -87,10 +87,10 @@ namespace Restaurant_Manager_Database
                     return true;
             }
         }
-        public void Show_menu()
+        private void Show_menu()
         {
             int i = 0;
-            if(D.menu_id.Count>0&&D.menu.Count>0)
+            if (D.menu_id.Count > 0 && D.menu.Count > 0)
             {
                 foreach (var id in D.menu_id)
                 {
@@ -107,9 +107,9 @@ namespace Restaurant_Manager_Database
                     i++;
                 }
             }
-           
+
         }
-        public bool OrderMenu()
+        private bool OrderMenu()
         {
             Console.Clear();
             Console.WriteLine("Order Manager:");
@@ -124,7 +124,7 @@ namespace Restaurant_Manager_Database
             switch (Console.ReadLine())
             {
                 case "1":
-                    O.Create(D.order_id,D.order,D.menu_id,D.menu,D.time,D.stock_id,D.stock,D.unit,D.prt_cnt,D.prt_sze);
+                    O.Create(D.order_id, D.order, D.menu_id, D.menu, D.time, D.stock_id, D.stock, D.unit, D.prt_cnt, D.prt_sze);
                     return true;
                 case "2":
                     O.Complete(D.order_id, D.order, D.menu_id, D.menu, D.time, D.stock_id, D.stock, D.unit, D.prt_cnt, D.prt_sze);
@@ -138,7 +138,7 @@ namespace Restaurant_Manager_Database
                     return true;
             }
         }
-        public void Order_menu()
+        private void Order_menu()
         {
             for (int i = 0; i < D.order_id.Count; i++)
             {
@@ -150,7 +150,7 @@ namespace Restaurant_Manager_Database
                 Console.WriteLine();
 
             }
-            
+
         }
         public bool WholeMenu()
         {

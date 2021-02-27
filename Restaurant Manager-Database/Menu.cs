@@ -11,9 +11,8 @@ namespace Restaurant_Manager_Database
         public void Add(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
         {
             int cnt = 0;
-            int id;
             bool stop = false;
-            id = int.Parse(Console.ReadLine());
+            int id = int.Parse(Console.ReadLine());
             string dish = Console.ReadLine();
             int size = int.Parse(Console.ReadLine());
             List<int> prod = new List<int>();
@@ -38,31 +37,30 @@ namespace Restaurant_Manager_Database
                                 prod.Add(sk);
                                 cnt++;
                             }
-                           
+
                         }
                     }
 
                 }
-                if (stop == false&& cnt == size)
+                if (stop == false && cnt == size)
                 {
                     menu_id.Add(id);
                     menu.Add(new Tuple<string, List<int>>(dish, prod));
-                    addMenu(id, dish, prod, "Menu.csv");
+                    AddMenu(id, dish, prod, "Menu.csv");
                 }
             }
             else
             {
-                menu_id.RemoveAt(menu_id.Count-1);
+                menu_id.RemoveAt(menu_id.Count - 1);
             }
-            
+
 
         }
         public void Update(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
         {
             int cnt = 0;
-            int sk = 0;
             int tmp = 0;
-            sk = Convert.ToInt32(Console.ReadLine());
+            int sk = Convert.ToInt32(Console.ReadLine());
             string dish = Console.ReadLine();
             List<int> prod = new List<int>();
             int size = int.Parse(Console.ReadLine());
@@ -93,28 +91,26 @@ namespace Restaurant_Manager_Database
             if (cnt == size)
             {
                 menu[tmp] = Tuple.Create(dish, prod);
-                addMenu(sk, dish,prod,"Menu.csv");
+                AddMenu(sk, dish, prod, "Menu.csv");
             }
             else
             {
                 Console.WriteLine("Error");
             }
 
-            
+
         }
         public void Remove(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
         {
-            int sk = 0;
-            int tmp = 0;
-            sk = Convert.ToInt32(Console.ReadLine());
+            int sk = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < menu_id.Count; i++)
             {
                 if (sk == menu_id[i])
                 {
-                    tmp = i;
+                    int tmp = i;
                     menu.RemoveAt(tmp);
                     menu_id.RemoveAt(tmp);
-                    deleteMenu(menu_id[i],"Menu.csv",i);
+                    DeleteMenu(menu_id[i], "Menu.csv", i);
                     break;
                 }
                 else if (i == menu_id.Count - 1)
@@ -123,28 +119,25 @@ namespace Restaurant_Manager_Database
                 }
             }
         }
-        public static void addMenu(int ID, string name, List<int> products, string filepath)
+        public static void AddMenu(int ID, string name, List<int> products, string filepath)
         {
             try
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
+                using System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true);
+                file.Write(ID + "," + name + ",");
+                foreach (var prod in products)
                 {
-                    file.Write(ID + "," + name + ",");
-                    foreach (var prod in products)
-                    {
-                        file.Write(prod);
-                        file.Write(" ");
-                    }
-                    file.WriteLine();
-                     
+                    file.Write(prod);
+                    file.Write(" ");
                 }
+                file.WriteLine();
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Error", ex);
             }
         }
-        public static void deleteMenu(int ID, string filepath, int pos)
+        public static void DeleteMenu(int ID, string filepath, int pos)
         {
             pos--;
             string tempfile = "temp.csv";
@@ -155,9 +148,9 @@ namespace Restaurant_Manager_Database
                 for (int i = 0; i < lines.Length; i++)
                 {
                     string[] fields = lines[i].Split(',');
-                    if (!(recordMatches(ID, fields, pos)) || deleted)
+                    if (!(RecordMatches(ID, fields, pos)) || deleted)
                     {
-                        addMenu(int.Parse(fields[0]), fields[1], new List<int>(int.Parse(fields[2])), @tempfile);
+                        AddMenu(int.Parse(fields[0]), fields[1], new List<int>(int.Parse(fields[2])), @tempfile);
                     }
                     else
                     {
@@ -173,7 +166,7 @@ namespace Restaurant_Manager_Database
                 throw new ApplicationException("Error!", ex);
             }
         }
-        public static bool recordMatches(int ID, string[] record, int pos)
+        public static bool RecordMatches(int ID, string[] record, int pos)
         {
             if (record[pos].Equals(ID))
             {
