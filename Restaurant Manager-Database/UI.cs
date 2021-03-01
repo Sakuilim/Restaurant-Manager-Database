@@ -127,10 +127,11 @@ namespace Restaurant_Manager_Database
                     O.Create(D.order_id, D.order, D.menu_id, D.menu, D.time, D.stock_id, D.stock, D.unit, D.prt_cnt, D.prt_sze);
                     return true;
                 case "2":
-                    O.Complete(D.order_id, D.order, D.menu_id, D.menu, D.time, D.stock_id, D.stock, D.unit, D.prt_cnt, D.prt_sze);
+                    O.Complete(D.order_id, D.time, D.order);
                     return true;
                 case "3":
-                    O.Cancel(D.order_id, D.time, D.order);
+                    O.Cancel(D.order_id, D.order, D.menu_id, D.menu, D.time, D.stock_id, D.stock, D.unit, D.prt_cnt, D.prt_sze);
+                    O.Complete(D.order_id, D.time, D.order);
                     return true;
                 case "4":
                     return false;

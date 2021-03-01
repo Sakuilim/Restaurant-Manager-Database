@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace Restaurant_Manager_Database
 {
-    class Data
+    public class Data
     {
         public List<int> stock_id = new List<int>();
         public List<float> prt_cnt = new List<float>();

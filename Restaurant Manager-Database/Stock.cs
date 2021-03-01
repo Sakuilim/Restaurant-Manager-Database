@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Restaurant_Manager_Database
 {
-    class Stock
+    class Stock : GlobalMethods
     {
         public void Add(List<int> stock_id, List<string> stock, List<string> unit, List<float> prt_cnt, List<float> prt_sze)
         {
@@ -21,7 +21,7 @@ namespace Restaurant_Manager_Database
             int sk = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < stock_id.Count; i++)
             {
-                if (0 == stock_id[i])
+                if (sk == stock_id[i])
                 {
                     int tmp = i;
                     DeleteStock(stock_id[i], "Stock.txt", 0);
@@ -39,16 +39,13 @@ namespace Restaurant_Manager_Database
         }
         public void Remove(List<int> stock_id, List<string> stock, List<string> unit, List<float> prt_cnt, List<float> prt_sze)
         {
-            int sk = 0;
-            int tmp = 0;
-            sk = Convert.ToInt32(Console.ReadLine());
+            int sk = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < stock_id.Count; i++)
             {
                 if (sk == stock_id[i])
                 {
                     DeleteStock(stock_id[i], "Stock.txt", 0);
-                    tmp = i;
-
+                    int tmp = i;
                     stock_id.RemoveAt(tmp);
                     stock.RemoveAt(tmp);
                     prt_cnt.RemoveAt(tmp);
@@ -65,17 +62,15 @@ namespace Restaurant_Manager_Database
         {
             try
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
-                {
-                    file.WriteLine(ID + "," + name + "," + portion + "," + unit + "," + prtsize);
-                }
+                using System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true);
+                file.WriteLine(ID + "," + name + "," + portion + "," + unit + "," + prtsize);
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Error", ex);
             }
         }
-        public static void DeleteStock(int stock_id, string filepath, int pos)
+        public void DeleteStock(int stock_id, string filepath, int pos)
         {
             string tempfile = "temp.txt";
             bool deleted = false;
@@ -95,7 +90,6 @@ namespace Restaurant_Manager_Database
                         Console.WriteLine("Deleted!");
                     }
                 }
-
                 if (lines.Length > 1)
                 {
                     File.Delete(@filepath);
@@ -105,17 +99,8 @@ namespace Restaurant_Manager_Database
                 {
                     File.Create(filepath).Close();
                 }
-
-
             }
         }
-        public static bool RecordMatches(int ID, string[] record, int pos)
-        {
-            if (record[pos] == Convert.ToString(ID))
-            {
-                return true;
-            }
-            return false;
-        }
+
     }
 }

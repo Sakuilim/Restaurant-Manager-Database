@@ -6,8 +6,9 @@ using System.Threading;
 
 namespace Restaurant_Manager_Database
 {
-    class Menu
+    class Menu : GlobalMethods
     {
+        //GlobalMethods GB = new GlobalMethods();
         public void Add(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
         {
             int cnt = 0;
@@ -46,34 +47,37 @@ namespace Restaurant_Manager_Database
                 {
                     menu_id.Add(id);
                     menu.Add(new Tuple<string, List<int>>(dish, prod));
-                    AddMenu(id, dish, prod, "Menu.csv");
+                    AddMenu(id, dish, prod, "Menu.txt");
                 }
             }
             else
             {
                 menu_id.RemoveAt(menu_id.Count - 1);
             }
-
-
         }
         public void Update(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
         {
-            int cnt = 0;
-            int tmp = 0;
             int sk = Convert.ToInt32(Console.ReadLine());
-            string dish = Console.ReadLine();
-            List<int> prod = new List<int>();
-            int size = int.Parse(Console.ReadLine());
+            int cnt = 0;
+            Console.WriteLine(menu.Count);
             for (int i = 0; i < menu_id.Count; i++)
             {
                 if (sk == menu_id[i])
                 {
-                    tmp = i;
+                   
+                    string dish = Console.ReadLine();
+                    List<int> prod = new List<int>();
+                    int size = int.Parse(Console.ReadLine());
                     for (int j = 0; j < size; j++)
                     {
                         int sk2 = int.Parse(Console.ReadLine());
-                        for (int k = 0; k < stock_id.Count; k++)
+                       // for (int k = 0; k < stock_id.Count; k++)
                         {
+                            if (size > stock_id.Count)
+                            {
+                                Console.WriteLine("Size is more than the size of stock");
+                                break;
+                            }
                             if (sk2 == stock_id[j])
                             {
                                 prod.Add(sk2);
@@ -81,24 +85,14 @@ namespace Restaurant_Manager_Database
                             }
                         }
                     }
+                    if (cnt == size)
+                    {
+                        menu[sk-1] = Tuple.Create(dish, prod);
+                        DeleteMenu(sk, "Menu.txt", 0);
+                        AddMenu(sk, dish, prod, "Menu.txt");
+                    }
                 }
-                else if (i == menu_id.Count - 1)
-                {
-                    Console.WriteLine("There's no such ID, try again");
-                    Thread.Sleep(1000);
-                }
             }
-            if (cnt == size)
-            {
-                menu[tmp] = Tuple.Create(dish, prod);
-                AddMenu(sk, dish, prod, "Menu.csv");
-            }
-            else
-            {
-                Console.WriteLine("Error");
-            }
-
-
         }
         public void Remove(List<int> menu_id, List<Tuple<string, List<int>>> menu, List<int> stock_id)
         {
@@ -107,11 +101,9 @@ namespace Restaurant_Manager_Database
             {
                 if (sk == menu_id[i])
                 {
-                    int tmp = i;
-                    menu.RemoveAt(tmp);
-                    menu_id.RemoveAt(tmp);
-                    DeleteMenu(menu_id[i], "Menu.csv", i);
-                    break;
+                    DeleteMenu(menu_id[i], "Menu.txt", 0);
+                    menu.RemoveAt(i);
+                    menu_id.RemoveAt(i);
                 }
                 else if (i == menu_id.Count - 1)
                 {
@@ -128,7 +120,7 @@ namespace Restaurant_Manager_Database
                 foreach (var prod in products)
                 {
                     file.Write(prod);
-                    file.Write(" ");
+                    file.Write(",");
                 }
                 file.WriteLine();
             }
@@ -137,42 +129,35 @@ namespace Restaurant_Manager_Database
                 throw new ApplicationException("Error", ex);
             }
         }
-        public static void DeleteMenu(int ID, string filepath, int pos)
+        public void DeleteMenu(int ID, string filepath, int pos)
         {
-            pos--;
-            string tempfile = "temp.csv";
+            string tempfile = "temp.txt";
             bool deleted = false;
-            try
             {
                 string[] lines = System.IO.File.ReadAllLines(@filepath);
                 for (int i = 0; i < lines.Length; i++)
                 {
                     string[] fields = lines[i].Split(',');
-                    if (!(RecordMatches(ID, fields, pos)) || deleted)
+                    if (RecordMatches(ID, fields, pos) == false || deleted)
                     {
                         AddMenu(int.Parse(fields[0]), fields[1], new List<int>(int.Parse(fields[2])), @tempfile);
                     }
                     else
                     {
-                        deleted = true;
+                        deleted = true;     
                         Console.WriteLine("Deleted!");
                     }
                 }
-                File.Delete(@filepath);
-                System.IO.File.Move(tempfile, filepath);
+                if (lines.Length > 1)
+                {
+                    File.Delete(@filepath);
+                    System.IO.File.Move(tempfile, filepath);
+                }
+                else
+                {
+                    File.Create(filepath).Close();
+                }
             }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Error!", ex);
-            }
-        }
-        public static bool RecordMatches(int ID, string[] record, int pos)
-        {
-            if (record[pos].Equals(ID))
-            {
-                return true;
-            }
-            return false;
         }
     }
 }
