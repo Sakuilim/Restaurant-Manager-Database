@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Restaurant_Manager_Database.MenuOperations
 {
-    public class MenuAdd
+    public static class MenuAdd
     {
         public static List<MenuData> Add(List<MenuData> menuDataList, List<StockData> stockDataList)
         {

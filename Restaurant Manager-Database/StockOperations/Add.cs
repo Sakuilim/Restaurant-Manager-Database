@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Restaurant_Manager_Database.StockOperations
 {
-    public class Add
+    public static class Add
     {
         public static List<StockData> AddToList(List<StockData> stockDataList)
         {

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Restaurant_Manager_Database.MenuOperations
 {
-    public class MenuUpdate
+    public static class MenuUpdate
     {
         public static List<MenuData> Update(List<MenuData> menuDataList, List<StockData> stockDataList)
         {

@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Restaurant_Manager_Database.StockOperations
 {
-    public class Delete
+    public static class Delete
     {
         public static List<StockData> Remove(List<StockData> stockDataList)
         {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Restaurant_Manager_Database.MenuOperations
 {
-    public class MenuDelete
+    public static class MenuDelete
     {
         public static List<MenuData> Remove(List<MenuData> menuDataList)
         {

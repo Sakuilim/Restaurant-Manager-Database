@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Restaurant_Manager_Database.OrderOperations
 {
-    public class OrderComplete
+    public static class OrderComplete
     {
         public static List<OrderData> Complete(List<OrderData> orderDataList)
         {

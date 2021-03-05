@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Restaurant_Manager_Database.OrderOperations
 {
-    public class OrderCancel
+    public static class OrderCancel
     {
         public static List<OrderData> Cancel(List<OrderData> orderDataList, List<MenuData> menuDataList, List<StockData> stockDataList)
         {

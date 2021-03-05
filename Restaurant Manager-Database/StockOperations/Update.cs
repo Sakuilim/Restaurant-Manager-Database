@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Restaurant_Manager_Database.StockOperations
 {
-    public class Update
+    public static class Update
     {
         public static List<StockData> UpdateList(List<StockData> stockDataList)
         {
