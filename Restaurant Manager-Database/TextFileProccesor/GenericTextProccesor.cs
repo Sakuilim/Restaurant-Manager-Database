@@ -47,10 +47,11 @@ namespace Restaurant_Manager_Database.TextFileProccesor
                                 }
                                 else 
                                 {
-
                                     List<int> list = vals[i].Split(' ').Select(n => Convert.ToInt32(n)).ToList();
-
-                                    col.SetValue(entry, list);
+                                    if (list != null)
+                                    {
+                                        col.SetValue(entry, list);
+                                    }
 
                                 }
 
@@ -94,7 +95,7 @@ namespace Restaurant_Manager_Database.TextFileProccesor
                 line = new StringBuilder();
                 foreach (var col in cols)
                 {
-                    if(col.Name!="menu")
+                    if(col.PropertyType != typeof(List<int>))
                     {
                         line.Append(col.GetValue(row));
                         line.Append(",");

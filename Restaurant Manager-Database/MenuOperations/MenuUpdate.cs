@@ -12,7 +12,6 @@ namespace Restaurant_Manager_Database.MenuOperations
             int sk = Convert.ToInt32(Console.ReadLine());
             int cnt = 0;
             MenuData menuData = new MenuData();
-            Console.WriteLine(menuDataList.Count);
             menuData.menu_id = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < menuDataList.Count; i++)
             {
@@ -31,7 +30,7 @@ namespace Restaurant_Manager_Database.MenuOperations
                                 Console.WriteLine("Size is more than the size of stock");
                                 break;
                             }
-                            if (sk2 == stockDataList[j].stock_id)
+                            if (sk2 == stockDataList[k].stock_id)
                             {
                                 menuData.menu.Add(sk2);
                                 cnt++;
@@ -40,7 +39,7 @@ namespace Restaurant_Manager_Database.MenuOperations
                     }
                     if (cnt == size)
                     {
-                        menuDataList[sk] = menuData;
+                        menuDataList[i] = menuData;
                     }
                 }
             }

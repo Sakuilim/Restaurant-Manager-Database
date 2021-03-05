@@ -23,12 +23,15 @@ namespace Restaurant_Manager_Database.UserInterface
             {
                 foreach (var m in menuData)
                 {
-                    Console.Write($"{m.menu_id} {m.name} ");
-                    foreach (int sk in m.menu)
+                    if (m != menuData[0])
                     {
-                        Console.Write($"{sk}");
+                        Console.Write($"{m.menu_id} {m.name} ");
+                        foreach (int sk in m.menu)
+                        {
+                            Console.Write($"{sk}");
+                        }
+                        Console.WriteLine();
                     }
-                    Console.WriteLine();
                 }
             }
             Console.Write("\r\nSelect an option: ");
@@ -36,15 +39,15 @@ namespace Restaurant_Manager_Database.UserInterface
             {
                 case "1":
                     MenuAdd.Add(menuData, stockData);
-                    GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
+                  //  GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
                     return true;
                 case "2":
                     MenuDelete.Remove(menuData);
-                    GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
+                  //  GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
                     return true;
                 case "3":
                     MenuUpdate.Update(menuData, stockData);
-                    GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
+                   // GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
                     return true;
                 case "4":
                     return false;

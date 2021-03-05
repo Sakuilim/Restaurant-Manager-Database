@@ -12,7 +12,7 @@ namespace Restaurant_Manager_Database.OrderOperations
             OrderData orderData = new OrderData();
             int cnt = 0;
             bool stop = false;
-            orderData.time = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            orderData.time = DateTime.Now;
             orderData.order_id = int.Parse(Console.ReadLine());
             int size = int.Parse(Console.ReadLine());
             {
@@ -54,6 +54,7 @@ namespace Restaurant_Manager_Database.OrderOperations
                 else
                 {
                     Console.WriteLine("Error!");
+                    Console.ReadLine();
                 }
             }
             return orderDataList;

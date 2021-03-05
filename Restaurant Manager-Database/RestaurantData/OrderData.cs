@@ -9,8 +9,13 @@ namespace Restaurant_Manager_Database.RestaurantData
 
         public int order_id { get; set; }
 
-        public string time { get; set; }
+        public DateTime time { get; set; }
 
         public List<int> order { get; set; }
+
+        public OrderData()
+        {
+            order = new List<int>();
+        }
     }
 }
