@@ -23,7 +23,10 @@ namespace Restaurant_Manager_Database.UserInterface
             {
                 foreach (var s in stockData)
                 {
-                    Console.WriteLine($"{s.stock_id} {s.stock} {s.prt_cnt} {s.unit} {s.prt_sze}");
+                    if (s != stockData[0])
+                    {
+                        Console.WriteLine($"{s.stock_id} {s.stock} {s.prt_cnt} {s.unit} {s.prt_sze}");
+                    }
                 }
             }
             Console.Write("\r\nSelect an option: ");
@@ -31,15 +34,15 @@ namespace Restaurant_Manager_Database.UserInterface
             {
                 case "1":
                     Add.AddToList(stockData);
-                    GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
+                   // GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
                     return true;
                 case "2":
                     Delete.Remove(stockData);
-                    GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
+                  //  GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
                     return true;
                 case "3":
                     Update.UpdateList(stockData);
-                    GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
+                  //  GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
                     return true;
                 case "4":
                     return false;

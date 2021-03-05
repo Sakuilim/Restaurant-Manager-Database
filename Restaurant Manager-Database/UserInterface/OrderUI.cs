@@ -20,18 +20,19 @@ namespace Restaurant_Manager_Database.UserInterface
             Console.WriteLine("3) Cancel an Order");
             Console.WriteLine("4) Exit");
             Console.WriteLine("Current Orders:");
-            Console.WriteLine(orderData.Count);
-            Console.ReadLine();
             if (orderData.Count > 0)
             {
                 foreach (var o in orderData)
                 {
-                    Console.Write($"{o.order_id} {o.time} ");
-                    foreach (int sk1 in o.order)
+                    if (o != orderData[0])
                     {
-                        Console.Write($"{sk1}");
+                        Console.Write($"{o.order_id} {o.time} ");
+                        foreach (int sk1 in o.order)
+                        {
+                            Console.Write($"{sk1}");
+                        }
+                        Console.WriteLine();
                     }
-                    Console.WriteLine();
 
                 }
             }
@@ -40,16 +41,16 @@ namespace Restaurant_Manager_Database.UserInterface
             {
                 case "1":
                     OrderCreate.Create(OrderDataAccess.orderData, MenuDataAccess.menuData, stockData);
-                    GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
+                  //  GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
                     return true;
                 case "2":
                     OrderComplete.Complete(OrderDataAccess.orderData);
-                    GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
+                 //   GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
                     return true;
                 case "3":
                     OrderCancel.Cancel(OrderDataAccess.orderData, MenuDataAccess.menuData, StockDataAccess.stockData);
                     OrderComplete.Complete(OrderDataAccess.orderData);
-                    GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
+                //    GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
                     return true;
                 case "4":
                     return false;
