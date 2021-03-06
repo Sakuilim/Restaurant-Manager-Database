@@ -46,6 +46,7 @@ Product list separated by space.
   declined.
   
 ● The program should also:
+
   ○ Display all the stock
   
   ○ Display all the menu items
