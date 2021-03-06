@@ -1,6 +1,8 @@
 # Restaurant-Manager-Database
 Restaurant manager/database made with C#
 
+//Interfaces were not used on purpose
+
 ● Manage the restaurant stock:
 
   ○ Add new products to stock. For example 10kg of chicken, 10 units of cola
@@ -45,5 +47,7 @@ Product list separated by space.
   
 ● The program should also:
   ○ Display all the stock
+  
   ○ Display all the menu items
+  
   ○ Display all the orders
