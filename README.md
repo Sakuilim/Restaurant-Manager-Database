@@ -15,8 +15,9 @@ Restaurant manager/database made with C#
 
 ● Manage the restaurant menu:
 
-  ○ Add new menu items. When the new menu item is created it is also
+  ○ Add new menu items.
   
+  When the new menu item is created it is also
   necessary to add it’s needed ingredients. Recipe can have only one portion of
   product. For example:
   
