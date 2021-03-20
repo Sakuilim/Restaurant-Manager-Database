@@ -8,7 +8,7 @@ namespace Restaurant_Manager_Database.UserInterface
 {
     public class StockUI : StockDataAccess
     {
-       
+
         public static bool StockMenu(List<StockData> stockData)
         {
             Console.Clear();
@@ -21,7 +21,7 @@ namespace Restaurant_Manager_Database.UserInterface
             Console.WriteLine("Current Stock:");
             if (stockData.Count > 0)
             {
-                foreach (var s in stockData)
+                foreach (StockData s in stockData)
                 {
                     if (s != stockData[0])
                     {
@@ -34,15 +34,15 @@ namespace Restaurant_Manager_Database.UserInterface
             {
                 case "1":
                     Add.AddToList(stockData);
-                   // GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
+                    // GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
                     return true;
                 case "2":
                     Delete.Remove(stockData);
-                  //  GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
+                    //  GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
                     return true;
                 case "3":
                     Update.UpdateList(stockData);
-                  //  GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
+                    //  GenericTextProccesor.SaveToTextFile<StockData>(stockData, "Stock.csv");
                     return true;
                 case "4":
                     return false;

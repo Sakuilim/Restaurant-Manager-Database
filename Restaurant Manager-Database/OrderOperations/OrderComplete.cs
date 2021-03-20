@@ -1,7 +1,6 @@
 ﻿using Restaurant_Manager_Database.RestaurantData;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Restaurant_Manager_Database.OrderOperations
 {
@@ -17,7 +16,7 @@ namespace Restaurant_Manager_Database.OrderOperations
                     orderDataList.RemoveAt(i);
                     break;
                 }
-                else if (i == orderDataList.Count-1)
+                else if (i == orderDataList.Count - 1)
                 {
                     Console.WriteLine("There's no such ID, try again");
                 }

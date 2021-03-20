@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\miliu\\Documents\\GitHub\\Repo\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj": {}
+    "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj": {}
   },
   "projects": {
-    "C:\\Users\\miliu\\Documents\\GitHub\\Repo\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj": {
+    "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\miliu\\Documents\\GitHub\\Repo\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj",
+        "projectUniqueName": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj",
         "projectName": "Restaurant Manager-Database",
-        "projectPath": "C:\\Users\\miliu\\Documents\\GitHub\\Repo\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj",
+        "projectPath": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant-Manager-Database\\Restaurant Manager-Database\\Restaurant Manager-Database.csproj",
         "packagesPath": "C:\\Users\\miliu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\miliu\\Documents\\GitHub\\Repo\\Restaurant-Manager-Database\\Restaurant Manager-Database\\obj\\",
+        "outputPath": "C:\\Users\\miliu\\Documents\\GitHub\\Restaurant-Manager-Database\\Restaurant Manager-Database\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
           "C:\\Users\\miliu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -54,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

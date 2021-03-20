@@ -1,8 +1,6 @@
 ﻿using Restaurant_Manager_Database.RestaurantData;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace Restaurant_Manager_Database.MenuOperations
 {
@@ -14,7 +12,7 @@ namespace Restaurant_Manager_Database.MenuOperations
             int sk = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < menuDataList.Count; i++)
             {
-                if (sk ==  menuDataList[i].menu_id)
+                if (sk == menuDataList[i].menu_id)
                 {
                     menuDataList.RemoveAt(i);
                 }
@@ -25,6 +23,6 @@ namespace Restaurant_Manager_Database.MenuOperations
             }
             return menuDataList;
         }
-        
+
     }
 }

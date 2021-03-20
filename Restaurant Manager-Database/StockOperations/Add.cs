@@ -1,7 +1,6 @@
 ﻿using Restaurant_Manager_Database.RestaurantData;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Restaurant_Manager_Database.StockOperations
 {
@@ -22,7 +21,7 @@ namespace Restaurant_Manager_Database.StockOperations
         {
             try
             {
-                using System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true); 
+                using System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true);
                 file.WriteLine(ID + "," + name + "," + portion + "," + unit + "," + prtsize);
             }
             catch (Exception ex)

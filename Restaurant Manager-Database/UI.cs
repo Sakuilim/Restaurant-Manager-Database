@@ -21,16 +21,16 @@ namespace Restaurant_Manager_Database
             switch (Console.ReadLine())
             {
                 case "1":
-                    
+
                     StockUI.StockMenu(stockData);
                     GenericTextProccesor.SaveToTextFile(StockDataAccess.stockData, "Stock.csv");
                     return true;
                 case "2":
-                    MenuUI.RestMenu(menuData,stockData);
+                    MenuUI.RestMenu(menuData, stockData);
                     GenericTextProccesor.SaveToTextFile(MenuDataAccess.menuData, "Menu.csv");
                     return true;
                 case "3":
-                    OrderUI.OrderMenu(orderData,menuData,stockData);
+                    OrderUI.OrderMenu(orderData, menuData, stockData);
                     GenericTextProccesor.SaveToTextFile(OrderDataAccess.orderData, "Order.csv");
                     return true;
                 case "4":

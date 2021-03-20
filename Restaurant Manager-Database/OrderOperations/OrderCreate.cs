@@ -1,7 +1,6 @@
 ﻿using Restaurant_Manager_Database.RestaurantData;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Restaurant_Manager_Database.OrderOperations
 {
@@ -25,7 +24,7 @@ namespace Restaurant_Manager_Database.OrderOperations
                         {
                             orderData.order.Add(sk);
                             cnt++;
-                            foreach (var id in menuDataList[l].menu)
+                            foreach (int id in menuDataList[l].menu)
                             {
                                 for (int i = 0; i < stockDataList.Count; i++)
                                 {
@@ -49,7 +48,7 @@ namespace Restaurant_Manager_Database.OrderOperations
                 if (stop == false && cnt == size)
                 {
                     orderDataList.Add(orderData);
-                   
+
                 }
                 else
                 {

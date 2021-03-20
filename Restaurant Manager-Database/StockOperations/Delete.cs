@@ -1,9 +1,6 @@
 ﻿using Restaurant_Manager_Database.RestaurantData;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading;
 
 namespace Restaurant_Manager_Database.StockOperations
 {
@@ -26,6 +23,6 @@ namespace Restaurant_Manager_Database.StockOperations
             }
             return stockDataList;
         }
-       
+
     }
 }

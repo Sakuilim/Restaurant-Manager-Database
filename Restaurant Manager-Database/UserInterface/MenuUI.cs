@@ -21,7 +21,7 @@ namespace Restaurant_Manager_Database.UserInterface
             Console.WriteLine("Current Menu:");
             if (menuData.Count > 0)
             {
-                foreach (var m in menuData)
+                foreach (MenuData m in menuData)
                 {
                     if (m != menuData[0])
                     {
@@ -39,15 +39,15 @@ namespace Restaurant_Manager_Database.UserInterface
             {
                 case "1":
                     MenuAdd.Add(menuData, stockData);
-                  //  GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
+                    //  GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
                     return true;
                 case "2":
                     MenuDelete.Remove(menuData);
-                  //  GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
+                    //  GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
                     return true;
                 case "3":
                     MenuUpdate.Update(menuData, stockData);
-                   // GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
+                    // GenericTextProccesor.SaveToTextFile<MenuData>(menuData, "Menu.csv");
                     return true;
                 case "4":
                     return false;

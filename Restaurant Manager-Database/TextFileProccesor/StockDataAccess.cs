@@ -1,7 +1,5 @@
 ﻿using Restaurant_Manager_Database.RestaurantData;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Restaurant_Manager_Database.TextFileProccesor
 {
@@ -10,6 +8,6 @@ namespace Restaurant_Manager_Database.TextFileProccesor
 
         public static List<StockData> stockData = new List<StockData>();
 
-        
+
     }
 }

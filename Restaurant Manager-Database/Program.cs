@@ -1,10 +1,9 @@
 ﻿using Restaurant_Manager_Database.RestaurantData;
 using Restaurant_Manager_Database.TextFileProccesor;
-using System;
 
 namespace Restaurant_Manager_Database
 {
-    class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {
@@ -15,7 +14,7 @@ namespace Restaurant_Manager_Database
             bool showMenu = true;
             while (showMenu)
             {
-                showMenu = uI.WholeMenu(OrderDataAccess.orderData,StockDataAccess.stockData, MenuDataAccess.menuData);
+                showMenu = uI.WholeMenu(OrderDataAccess.orderData, StockDataAccess.stockData, MenuDataAccess.menuData);
             }
         }
 

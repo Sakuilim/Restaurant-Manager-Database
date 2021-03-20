@@ -1,8 +1,6 @@
 ﻿using Restaurant_Manager_Database.RestaurantData;
-using Restaurant_Manager_Database.TextFileProccesor;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace Restaurant_Manager_Database.StockOperations
@@ -22,7 +20,7 @@ namespace Restaurant_Manager_Database.StockOperations
                     stockDataList[i].unit = Console.ReadLine();
                     stockDataList[i].prt_sze = float.Parse(Console.ReadLine());
                 }
-                else if (i == stockDataList.Count-1)
+                else if (i == stockDataList.Count - 1)
                 {
                     Console.WriteLine("There's no such ID, try again");
                     Thread.Sleep(1000);

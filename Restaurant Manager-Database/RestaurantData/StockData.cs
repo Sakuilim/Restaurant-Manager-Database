@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Restaurant_Manager_Database.RestaurantData
+﻿namespace Restaurant_Manager_Database.RestaurantData
 {
     public class StockData
     {
@@ -13,6 +9,6 @@ namespace Restaurant_Manager_Database.RestaurantData
         public string unit { get; set; }
         public float prt_sze { get; set; }
 
-        
+
     }
 }

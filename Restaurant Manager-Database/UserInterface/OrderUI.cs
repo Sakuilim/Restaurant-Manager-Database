@@ -3,7 +3,6 @@ using Restaurant_Manager_Database.RestaurantData;
 using Restaurant_Manager_Database.TextFileProccesor;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Restaurant_Manager_Database.UserInterface
 {
@@ -22,7 +21,7 @@ namespace Restaurant_Manager_Database.UserInterface
             Console.WriteLine("Current Orders:");
             if (orderData.Count > 0)
             {
-                foreach (var o in orderData)
+                foreach (OrderData o in orderData)
                 {
                     if (o != orderData[0])
                     {
@@ -41,16 +40,16 @@ namespace Restaurant_Manager_Database.UserInterface
             {
                 case "1":
                     OrderCreate.Create(OrderDataAccess.orderData, MenuDataAccess.menuData, stockData);
-                  //  GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
+                    //  GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
                     return true;
                 case "2":
                     OrderComplete.Complete(OrderDataAccess.orderData);
-                 //   GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
+                    //   GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
                     return true;
                 case "3":
                     OrderCancel.Cancel(OrderDataAccess.orderData, MenuDataAccess.menuData, StockDataAccess.stockData);
                     OrderComplete.Complete(OrderDataAccess.orderData);
-                //    GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
+                    //    GenericTextProccesor.SaveToTextFile<OrderData>(orderData, "Order.csv");
                     return true;
                 case "4":
                     return false;
